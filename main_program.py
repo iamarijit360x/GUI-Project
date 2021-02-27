@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image,ImageTk
+from dependencies import validation
 
 class app(tk.Frame):
     
@@ -62,16 +63,22 @@ class app(tk.Frame):
         
     def scroll_binds(self):
         
+        #scroll
         def on_mousewheel(event):
             self.canvas_main.yview_scroll(int(-1*(event.delta/120)), "units")
-    
+        
+        #scroll bind
         def bound_to_mousewheel(event):
             self.canvas_main.bind_all("<MouseWheel>", on_mousewheel)   
-
+        
+        #scroll unbind
         def unbound_to_mousewheel(event):
             self.canvas_main.unbind_all("<MouseWheel>") 
-            
+        
+        #scroll bind on enter
         self.canvas_main.bind('<Enter>', bound_to_mousewheel)
+        
+        #scroll unbind on exit
         self.canvas_main.bind('<Leave>', unbound_to_mousewheel)
         
     def bottom_canvas_widget(self):
