@@ -1,25 +1,61 @@
-def phone_number_validation(check):
+import string
+import re
 
-''' Checks if the given variable contains a valid number or not '''
+def phone_number_validation(num):
     
-    try:
-        n = 0
-        for i in v:
-            k = int(i)
-            n += 1
-            
-        if n == 0:
-            return True
-        else:
-            return False
+    '''Check if the given variable contains a valid phone number or not'''
     
-    except:
+    check = re.compile("(0/91)?[7-9][0-9]{9}")
+    
+    if(check.match(num)):
+        return True
+    else:
         return False
     
-if __main__ == '__name__':
+def name_validation(check):
     
-    n = input('Enter to check if it is a valid number or not:')
+    ''' Checks if the given variable contains a valid name or not'''
+    
+    if len(check) == 0:
+        return False
+    
+    discard = list(string.punctuation) + list(map(str,range(10)))
+    
+    for i in list(check):
+         if i in discard:
+            return False
+        
+    else:
+        return True
+    
+def email_validation(check):
+    
+    '''Checks if the given variable contains a valid email or not'''
+    
+    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    
+    if(re.search(regex,check)):  
+        return True  
+    else:  
+        return False
+    
+    
+if __name__ == '__main__':
+    
+    n = input('Enter to check if it is a valid number or not(start with 91):')
     if phone_number_validation(n):
         print('The number is valid.')
     else:
         print('The number is invalid.')
+
+    n = input('Enter to check if it is a valid name or not:')
+    if name_validation(n):
+        print('The name is valid.')
+    else:
+        print('The name is invalid.')
+        
+    n = input('Enter to check if it is a valid email or not:')
+    if email_validation(n):
+        print('The email is valid.')
+    else:
+        print('The email is invalid.')
