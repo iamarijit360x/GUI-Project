@@ -55,7 +55,7 @@ class app(tk.Frame):
     def top_canvas_widget(self):
         
         #logo
-        logo = Image.open('assets/logo.png')
+        logo = Image.open(os.path.dirname(__file__)+'/assets/logo.png')
         logo = ImageTk.PhotoImage(logo)
         logo_label = tk.Label(self.canvas_top,image = logo,bg="#001a5c",bd=0)
         logo_label.image = logo
@@ -239,13 +239,13 @@ class app(tk.Frame):
         else:
             self.error.config(text = '')
             
-        if not vld.phone_number_validation(self.fph.get()[1:]):
+        if not vld.phone_number_validation(self.fph.get()[3:]):
             self.error.config(text = 'Wrong number in "FATHER\'S PHONE NUMBER"')
             return
         else:
             self.error.config(text = '')
             
-        if not vld.phone_number_validation(self.mph.get()[1:]):
+        if not vld.phone_number_validation(self.mph.get()[3:]):
             self.error.config(text = 'Wrong number in "MOTHER\'S PHONE NUMBER"')
             return
         else:
