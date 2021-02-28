@@ -55,7 +55,7 @@ class app(tk.Frame):
     def top_canvas_widget(self):
         
         #logo
-        logo = Image.open(os.path.dirname(__file__)+'/assets/logo.png')
+        logo = Image.open('assets/logo.png')
         logo = ImageTk.PhotoImage(logo)
         logo_label = tk.Label(self.canvas_top,image = logo,bg="#001a5c",bd=0)
         logo_label.image = logo
