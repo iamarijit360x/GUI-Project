@@ -34,12 +34,12 @@ class app(tk.Frame):
         
         
         #bottom scrollable canvas
-        self.length = 1000
+        self.length = 1400
         
         frame = tk.Frame(self.canvas_back,highlightthickness = 0)
         self.canvas_back.create_window(525,463,window = frame)
         
-        self.canvas_main=tk.Canvas(frame,bg='#A8DADC',width=self.breadth,height=self.length,scrollregion=(0,-150,0,self.length), bd = 0, highlightthickness = 0)
+        self.canvas_main=tk.Canvas(frame,bg='#A8DADC',width=self.breadth,height=self.length,scrollregion=(0,-350,0,self.length-300), bd = 0, highlightthickness = 0)
         self.canvas_main.pack(side='left',expand=True,fill='both')
 
         vbar=tk.Scrollbar(frame,orient='vertical')
@@ -112,8 +112,12 @@ class app(tk.Frame):
         #departments
         dept = ['CSE','ECE','EE','IT']
         
+        #boards
+        board1=['CBSE','ICSE','WB','OTHERS']
+        board2=['CBSE','ISC','WB','OTHERS']
+        
         frame_1 = tk.Frame(self.canvas_form,bg = self.color)
-        self.canvas_form.create_window(490,450,window = frame_1)
+        self.canvas_form.create_window(490,500,window = frame_1)
         
         #name
         name_frame=tk.Frame(frame_1,bg=self.color,borderwidth=1,relief='solid')
@@ -143,13 +147,13 @@ class app(tk.Frame):
         dob_frame=tk.Frame(frame_1,bg=self.color,borderwidth=1,relief='solid')
         dob_frame.grid(row=7,columnspan=2)
         tk.Label(dob_frame,text="DOB:",font=self.fonter,bg=self.color).pack(side='left',padx=10,pady=20)
-        self.dd_combo=ttk.Combobox(dob_frame,value=date,width=5,font=self.fg_font,state="readonly")
+        self.dd_combo=ttk.Combobox(dob_frame,value=date,width=6,font=self.fg_font,state="readonly")
         self.dd_combo.pack(side='left')
         self.dd_combo.set("DD")
-        self.mm_combo=ttk.Combobox(dob_frame,value=month,width=5,font=self.fg_font,state="readonly")
+        self.mm_combo=ttk.Combobox(dob_frame,value=month,width=6,font=self.fg_font,state="readonly")
         self.mm_combo.pack(side='left')
         self.mm_combo.set("MM")
-        self.yy_combo=ttk.Combobox(dob_frame,value=year,width=5,font=self.fg_font,state="readonly")
+        self.yy_combo=ttk.Combobox(dob_frame,value=year,width=6,font=self.fg_font,state="readonly")
         self.yy_combo.pack(side='left')
         self.yy_combo.set("YY")
         tk.Label(dob_frame,text="",bg=self.color).pack()
@@ -157,13 +161,14 @@ class app(tk.Frame):
         tk.Label(frame_1,text="",bg=self.color).grid(row = 7,column=2)
         #gender
         gender_frame=tk.Frame(frame_1,bg=self.color,borderwidth=1,relief='solid')
-        gender_frame.grid(row=7,column=3,columnspan=4)
+        gender_frame.grid(row=7,column=3,columnspan=5)
         tk.Label(gender_frame,text="GENDER:",font=self.fonter,bg=self.color).pack(side='left',padx=8,pady=20)
         self.gender=tk.IntVar()
         self.gender.set(0)
         tk.Radiobutton(gender_frame,text="MALE",font=self.fg_font,bg=self.color,variable=self.gender,value=1).pack(side='left')
         tk.Radiobutton(gender_frame,text="FEMALE",font=self.fg_font,bg=self.color,variable=self.gender,value=2).pack(side='left')
         tk.Radiobutton(gender_frame,text="OTHERS",font=self.fg_font,bg=self.color,variable=self.gender,value=3).pack(side='left')
+        tk.Label(gender_frame,text="",bg=self.color).pack()
         
         tk.Label(frame_1,text="",bg=self.color).grid(row=8)
         #SHOUNAK:-
@@ -188,7 +193,7 @@ class app(tk.Frame):
         tk.Label(frame_1,text="",bg=self.color).grid(row = 12)
         #domicile
         domicile_frame=tk.Frame(frame_1,bg=self.color,borderwidth=1,relief='solid')
-        domicile_frame.grid(row=13,columnspan=2)
+        domicile_frame.grid(row=13,columnspan=2,sticky='w')
         tk.Label(domicile_frame,text="DOMICILE:",font=self.fonter,bg=self.color).pack(side='left',padx=10,pady=20)
         self.domicile_combo=ttk.Combobox(domicile_frame,value=['YES','NO'],width=15,font=self.fg_font,state="readonly")
         self.domicile_combo.pack(side='left')
@@ -198,12 +203,38 @@ class app(tk.Frame):
         dept_frame=tk.Frame(frame_1,bg=self.color,borderwidth=1,relief='solid')
         dept_frame.grid(row=13,column=3,columnspan=3)
         tk.Label(dept_frame,text="DEPARTMENT:",font=self.fonter,bg=self.color).pack(side='left',padx=10,pady=20)
-        self.dept_combo=ttk.Combobox(dept_frame,value=dept,width=5,font=self.fg_font,state="readonly")
+        self.dept_combo=ttk.Combobox(dept_frame,value=dept,width=8,font=self.fg_font,state="readonly")
         self.dept_combo.pack(side='left')
         tk.Label(dept_frame,text="",bg=self.color).pack()
         
+        tk.Label(frame_1,text="",bg=self.color).grid(row = 14)
+        #email
+        email_frame=tk.Frame(frame_1,bg=self.color,borderwidth=1,relief='solid')
+        email_frame.grid(row=15,columnspan=7)
+        tk.Label(email_frame,text="MAIL ID:",font=self.fonter,bg=self.color).pack(side='left',padx=10,pady=20)
+        self.email = tk.StringVar()
+        tk.Entry(email_frame,textvar=self.email,font=self.fg_font,width=66).pack(side='left',padx=10)
+        
+        tk.Label(frame_1,text="",bg=self.color).grid(row = 16)
+        #permanent address
+        
+        
+        
+        tk.Label(frame_1,text="",bg=self.color).grid(row = 16)
+#         #class 10 board name
+#         xboard_frame=tk.Frame(frame_1,bg=self.color,borderwidth=1,relief='solid')
+#         xboard_frame.grid(row=17,columnspan=2)
+#         tk.Label(xboard_frame,text="CLASS X BOARD NAME:",font=self.fonter,bg=self.color).pack(side='left',padx=10,pady=20)
+#         self.xboard_combo=ttk.Combobox(xboard_frame,value=board1,width=6,font=self.fg_font,state="readonly")
+#         self.xboard_combo.pack(side='left')
+#         tk.Label(xboard_frame,text="",bg=self.color).pack()
+        
+        
+        #error
         self.error = tk.Label(self.canvas_form,fg = 'red',bg = self.color, text = '')
         self.canvas_form.create_window(500,self.length - 85, window = self.error )
+        
+        #submission button
         submit = tk.Button(self.canvas_form,text = 'Submit',bg = '#6AE16A',fg = 'black',font = self.fonter,bd = 2,command=self.execution)
         self.canvas_form.create_window(500,self.length - 50,window = submit)
         
@@ -262,11 +293,17 @@ class app(tk.Frame):
             return
         else:
             self.error.config(text = '')
+            
+        if not vld.email_validation(self.email.get()):
+            self.error.config(text = 'Wrong input in "EMAIL"')
+            return
+        else:
+            self.error.config(text = '')
         
         dob = self.dd_combo.get() + '/' + self.mm_combo.get() + '/' + self.yy_combo.get()
         g = {1:'Male',2:'Female',3:'Others'}
         gender = g[self.gender.get()]
-        at_list = [self.name.get(),dob,self.f_name.get(),self.m_name.get(),gender,self.dept_combo.get(),self.domicile_combo.get(),self.mph.get(),self.fph.get()]
+        at_list = [self.name.get(),dob,self.f_name.get(),self.m_name.get(),gender,self.dept_combo.get(),self.domicile_combo.get(),self.mph.get(),self.fph.get(),self.email.get()]
         xls_append.save_xls_file(at_list,self.loc)
         
         

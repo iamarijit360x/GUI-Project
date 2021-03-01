@@ -11,7 +11,7 @@ def check_file(loc):
     
     if not(file.exists()):
         
-        data=["Registration Number","Name",'DOB',"Father's Name","Mother's Name","Gender",'Dept','Domicile','Mother\'s Phone Number','Father\'s Phone Number'] #first row
+        data=["Registration Number","Name",'DOB',"Father's Name","Mother's Name","Gender",'Dept','Domicile','Mother\'s Phone Number','Father\'s Phone Number','Email Id'] #first row
         wb = Workbook()
         page = wb.active
         page.append(data)
@@ -34,11 +34,3 @@ if __name__ == '__main__':
     
     loc=os.path.dirname(__file__) +'\studentinfo.xlsx'
     check_file(loc)
-    
-    a=['Arijit',20,'fg','fd','Male','ECE']
-    b=['Sumi',23,'xy','zx','Female','EE']
-    c=['Prajeet',25,'ab','cd','Male','CSE']
-
-    save_xls_file(a,loc)
-    save_xls_file(b,loc)
-    save_xls_file(c,loc)
