@@ -1,6 +1,7 @@
 import string
 import re
 
+#ARIJIT AND SHOUNAK:-
 def phone_number_validation(num):
     
     '''Check if the given variable contains a valid phone number or not'''
@@ -27,7 +28,8 @@ def name_validation(check):
         
     else:
         return True
-    
+
+#ANKITA AND ARIJIT:-
 def email_validation(check):
     
     '''Checks if the given variable contains a valid email or not'''

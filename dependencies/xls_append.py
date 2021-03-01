@@ -1,3 +1,5 @@
+#ARIJIT:-
+
 from openpyxl import load_workbook
 from openpyxl.workbook import Workbook
 import xlsxwriter
@@ -11,7 +13,7 @@ def check_file(loc):
     
     if not(file.exists()):
         
-        data=["Registration Number","Name",'DOB',"Father's Name","Mother's Name","Gender",'Dept','Domicile','Mother\'s Phone Number','Father\'s Phone Number','Email Id'] #first row
+        data=["Registration Number","Name",'DOB',"Father's Name","Mother's Name","Gender",'Dept','Domicile','Mother\'s Phone Number','Father\'s Phone Number','Email Id','Present Address','Permanent Address'] #first row
         wb = Workbook()
         page = wb.active
         page.append(data)
