@@ -330,10 +330,10 @@ class app(tk.Frame):
             self.error.config(text = '')
         
         #address validation
-        if elf.presA.get(1,'end') == '':
+        if self.presA.index('end') == 0:
             self.error.config(text = 'Wrong input in "PRESENT ADDRESS"')
             return
-        elif self.check.get() == 0 and self.permaA.get(1,'end') == '':
+        elif self.equal.get() == 0 and self.permaA.index('end') == 0:
             self.error.config(text = 'Wrong input in "PERMANENT ADDRESS"')
             return
         else:
@@ -345,10 +345,10 @@ class app(tk.Frame):
         gender = g[self.gender.get()]
         permanent_address = ''
         if self.equal.get() == 1:
-            permanent_address = self.presA.get(1,'end')
+            permanent_address = self.presA.get(1.0,'end')
         else:
-            permanent_address = self.permaA.get(1,'end')
-        at_list = [self.name.get(), dob,self.f_name.get(), self.m_name.get(), gender, self.dept_combo.get(), self.domicile_combo.get(), self.mph.get(), self.fph.get(), self.email.get(), self.presA.get(1,'end'), permanent_address]
+            permanent_address = self.permaA.get(1.0,'end')
+        at_list = [self.name.get(), dob,self.f_name.get(), self.m_name.get(), gender, self.dept_combo.get(), self.domicile_combo.get(), self.mph.get(), self.fph.get(), self.email.get(), self.presA.get(1.0,'end'), permanent_address]
         
         #write to excel
         xls_append.save_xls_file(at_list,self.loc)
@@ -359,7 +359,7 @@ class app(tk.Frame):
         
         if self.equal.get() == 1:
                 self.permaA.config(state='disabled',bg='#D3D3D3')
-                self.permaA.delete(1,'end')
+                self.permaA.delete(1.0,'end')
         else:
             self.permaA.config(state='normal',bg='white')
             
