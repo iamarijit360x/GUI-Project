@@ -3,7 +3,7 @@ import random
 
 def random_captcha():
     
-    s = 8
+    s = 5
     sentence = ''.join(random.choices(string.ascii_uppercase + string.digits, k = s))
     return sentence
 
@@ -21,4 +21,4 @@ def login_status_code(var_dict):
     
     #return the status_code only
     
-    pass
+    return {}  #just for testing
